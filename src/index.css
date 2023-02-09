@@ -1,4 +1,5 @@
 body {
+  background-image: url("C:\Users\chaya\OneDrive\Desktop\Practicum\demo_site\projectImages\ohtheplacwsyou'llgo.jpg");
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +11,64 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#welcome {
+  font-size: 400%;
+  color: #4b0961;
+  
+}
+#text {
+  font-size: 300%;
+  color: rgb(132, 173, 249);
+  padding: 3%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#row1 {
+  text-align: center;
+  display: flex;
+  padding: 50px;
+}
+#row2 {
+  text-align: center;
+  display: flex;
+  padding: 50px;
+}
+
+#bahamas {
+margin: 5%;
+width: 100%;
+
+}
+#niagara {
+  margin: 5%;
+  width: 100%;
+}
+
+#venice {
+  margin: 5%;
+  width: 100%;
+}
+#netanya {
+  margin: 5%;
+  width: 100%;
+}
+
+#arizona {
+  margin: 5%;
+  width: 100%;
+}
+#china {
+  margin: 5%;
+  width: 100%;
+}
+
+#subscribe{
+  margin-left: 45%;
+}
+
+#rateUs {
+ margin-left: 91%;
+ margin-bottom: 1em;
 }
