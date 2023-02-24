@@ -1,0 +1,15 @@
+div {
+  text-align: center;
+}
+#body {
+  background-image: url("C:\Users\chaya\OneDrive\Desktop\Practicum\demo_site\src\projectImages\pastel-color-watercolor-stain-background.jpg");
+}
+.todoBox {
+  outline-width: 3cm;
+  outline-color: aquamarine;
+  text-align: center;
+}
+#inputText {
+  margin-left: 5cm;
+  text-align: center;
+}
