@@ -8,13 +8,11 @@ import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 
-import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import Stack from "@mui/material/Stack";
 
 import Icon from "@mui/material/Icon";
 
@@ -58,19 +56,14 @@ export const Todo = () => {
           }}
         >
           Todo:
-        </Typography>
-
-        <div id="inputText">
-          <box
+          <br></br>
+          <Stack
             component="form"
-            sx={{
-              width: "25ch",
-              textAlign: "center",
-              marginLeft: "43%",
-            }}
             spacing={2}
             noValidate
             autoComplete="off"
+            marginLeft={80}
+            marginRight={80}
           >
             <TextField
               hiddenLabel
@@ -80,58 +73,60 @@ export const Todo = () => {
               onInput={onInput}
               value={input}
             />
-            <Icon onClick={addToDo} color="primary">
-              +
-            </Icon>
-          </box>
-        </div>
+          </Stack>
+          <Icon onClick={addToDo} color="primary" align="center">
+            +
+          </Icon>
+        </Typography>
 
-        <TableContainer component={Paper}>
-          <Table
-            aria-label="simple table"
-            className="todoBox"
-            sx={{
-              minWidth: 650,
-              borderColor: "aquamarine",
-              borderWidth: "2em",
-            }}
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell>Task</TableCell>
-                <TableCell align="right">Complete</TableCell>
-                <TableCell align="right">Delete</TableCell>
+        <br></br>
+        <br></br>
+
+        <Table
+          aria-label="simple table"
+          className="todoBox"
+          sx={{
+            minWidth: 650,
+            margin: "auto",
+            width: "50%",
+            backgroundColor: "#f3c9ff",
+          }}
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell>Task</TableCell>
+              <TableCell align="right">Complete</TableCell>
+              <TableCell align="right">Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {todos.map((todo, index) => (
+              <TableRow
+                key={index}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {todo.title}
+                </TableCell>
+                <TableCell align="right">
+                  {" "}
+                  <input
+                    type="checkbox"
+                    checked={todo.isComplete}
+                    onChange={() => toggleChecked(todo)}
+                  />
+                </TableCell>
+                <TableCell align="right">
+                  <Tooltip title="Delete">
+                    <IconButton onClick={() => deleteTodo(todo)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </TableCell>
               </TableRow>
-            </TableHead>
-            <TableBody>
-              {todos.map((todo, index) => (
-                <TableRow
-                  key={index}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {todo.title}
-                  </TableCell>
-                  <TableCell align="right">
-                    {" "}
-                    <input
-                      type="checkbox"
-                      checked={todo.isComplete}
-                      onChange={() => toggleChecked(todo)}
-                    />
-                  </TableCell>
-                  <TableCell align="right">
-                    <Tooltip title="Delete">
-                      <IconButton onClick={() => deleteTodo(todo)}>
-                        <DeleteIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+            ))}
+          </TableBody>
+        </Table>
       </box>
     </div>
   );
