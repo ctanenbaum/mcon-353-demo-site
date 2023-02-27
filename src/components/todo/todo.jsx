@@ -11,6 +11,8 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
+import Checkbox from "@mui/material/Checkbox";
+
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 
@@ -110,10 +112,10 @@ export const Todo = () => {
                 </TableCell>
                 <TableCell align="right">
                   {" "}
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={todo.isComplete}
                     onChange={() => toggleChecked(todo)}
+                    inputProps={{ "aria-label": "controlled" }}
                   />
                 </TableCell>
                 <TableCell align="right">
