@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { TodoContext } from "../../state/todoState/todoContext";
+import { TodoActions } from "../../state/todoState/todoReducer";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
@@ -20,30 +22,34 @@ import Icon from "@mui/material/Icon";
 
 export const Todo = () => {
   const [input, setInput] = useState(""); //use hook for keeping track of state
-  const [todos, setTodos] = useState([]);
+  const { todoState, todoDispatch } = useContext(TodoContext);
 
   const onInput = (event) => {
     console.log(event.target.value);
     setInput(event.target.value);
   };
 
-  const addToDo = () => {
-    //use the setTodos method to create new array instead of mutating the data, so that the page knows to rerender
-    setTodos([...todos, { title: input, isComplete: false }]); //create a new array with everything in the old array with the new data
+  const addTodo = () => {
+    todoDispatch({
+      type: TodoActions.ADD,
+      todo: { title: input, isComplete: false },
+    });
+
     setInput("");
   };
 
   const toggleChecked = (todo) => {
-    const newTodos = [...todos];
-    const updatedTodo = newTodos.find((x) => x.title === todo.title);
-    updatedTodo.isComplete = !todo.isComplete;
-    setTodos(newTodos);
+    todoDispatch({
+      type: TodoActions.TOGGLE,
+      todo,
+    });
   };
 
   const deleteTodo = (todo) => {
-    const newTodos = [...todos];
-    const updatedTodo = newTodos.filter((x) => !(x.title === todo.title));
-    setTodos(updatedTodo);
+    todoDispatch({
+      type: TodoActions.DELETE,
+      todo,
+    });
   };
 
   return (
@@ -76,7 +82,7 @@ export const Todo = () => {
               value={input}
             />
           </Stack>
-          <Icon onClick={addToDo} color="primary" align="center">
+          <Icon onClick={addTodo} color="primary" align="center">
             +
           </Icon>
         </Typography>
@@ -102,7 +108,7 @@ export const Todo = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {todos.map((todo, index) => (
+            {todoState.todos.map((todo, index) => (
               <TableRow
                 key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

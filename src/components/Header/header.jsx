@@ -21,6 +21,7 @@ import Stack from "@mui/material/Stack";
 const pages = [
   { name: "Home", path: "/" },
   { name: "Todo", path: "/todo" },
+  { name: "Chat", path: "/chat" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
