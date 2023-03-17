@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mcon-353-demo-site/static/css/main.700737ba.css",
+    "main.js": "/mcon-353-demo-site/static/js/main.35877483.js",
+    "static/js/787.5d944677.chunk.js": "/mcon-353-demo-site/static/js/787.5d944677.chunk.js",
+    "static/media/IMG_1451.JPG": "/mcon-353-demo-site/static/media/IMG_1451.705d3cd522f492ca2d55.JPG",
+    "static/media/arizona.jpg": "/mcon-353-demo-site/static/media/arizona.5be1e135802f28e89bf8.jpg",
+    "static/media/bahamas.jpg": "/mcon-353-demo-site/static/media/bahamas.7dceb72eb80468e2da15.jpg",
+    "static/media/ohtheplacwsyou'llgo.jpg": "/mcon-353-demo-site/static/media/ohtheplacwsyou'llgo.eebff3d139d67d144c72.jpg",
+    "static/media/venice.jpg": "/mcon-353-demo-site/static/media/venice.eedd63c118de846f28e3.jpg",
+    "static/media/vacaLogo.jpg": "/mcon-353-demo-site/static/media/vacaLogo.cd5a445322c3effab669.jpg",
+    "static/media/china.jpg": "/mcon-353-demo-site/static/media/china.523c47f65e73cad3abb5.jpg",
+    "index.html": "/mcon-353-demo-site/index.html",
+    "main.700737ba.css.map": "/mcon-353-demo-site/static/css/main.700737ba.css.map",
+    "main.35877483.js.map": "/mcon-353-demo-site/static/js/main.35877483.js.map",
+    "787.5d944677.chunk.js.map": "/mcon-353-demo-site/static/js/787.5d944677.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.700737ba.css",
+    "static/js/main.35877483.js"
+  ]
+}
