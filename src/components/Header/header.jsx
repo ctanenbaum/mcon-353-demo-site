@@ -15,9 +15,6 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import myImage1 from "../../projectImages/vacaLogo.jpg";
 
-import Rating from "@mui/material/Rating";
-import Stack from "@mui/material/Stack";
-
 const pages = [
   { name: "Home", path: "/" },
   { name: "Todo", path: "/todo" },
