@@ -3,10 +3,13 @@ import { useInterval } from "../../hooks/useInterval";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { MenuItem, TextField, Typography, Button } from "@mui/material";
+import { MenuItem, TextField, Typography, Button, Grid } from "@mui/material";
+
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import Drawer from "@mui/material/Drawer";
+import Toolbar from "@mui/material/Toolbar";
+import List from "@mui/material/List";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
 export const Chat = () => {
   const [chats, setChats] = useState([]);
@@ -15,6 +18,7 @@ export const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
   const [userName, setUserName] = useState("");
+  const drawerWidth = 240;
 
   function getChats() {
     fetch("https://z36h06gqg7.execute-api.us-east-1.amazonaws.com/chats")
@@ -32,15 +36,14 @@ export const Chat = () => {
     getMessages(chat.id);
   }
 
-  function createNewChat() {
+  function postNewChat() {
+    const chat = { name: newChatName };
     fetch("https://z36h06gqg7.execute-api.us-east-1.amazonaws.com/chats", {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json", // tells REST that we will send the body data in JSON format
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        name: newChatName,
-      }),
+      body: JSON.stringify(chat),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -110,110 +113,117 @@ export const Chat = () => {
 
   return (
     <div>
-      <br></br>
-      <Typography
-        variant="h2"
-        component="h2"
-        sx={{
-          color: "Highlight",
-
-          textAlign: "center",
-        }}
-      >
-        Chat
-      </Typography>
-      <Box
-        sx={{
-          bgcolor: "#cfe8fc",
-          height: "100vh",
-        }}
-      >
-        <div style={{ display: "flex" }}>
-          <Container maxWidth="sm">
-            <Box sx={{ minWidth: 120 }}>
-              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="chat-select-label">Chat</InputLabel>
-                <Select
-                  labelId="chat-select-label"
-                  id="chat-select"
-                  label="Chat"
-                >
-                  {chats.map((chat) => (
-                    <MenuItem key={chat.id} value={chat.id}>
-                      <Button color="secondary" onClick={() => setChat(chat)}>
-                        {chat.name}
-                      </Button>
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <TextField
-                variant="filled"
-                color="secondary"
-                label="Add New Chat"
-                placeholder="enter chat name"
-                onChange={(event) => setNewChatName(event.target.value)}
-                value={newChatName}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    createNewChat();
-                  }
-                }}
-                sx={{ margin: "1rem" }}
-              />
-              <br></br>
-              <TextField
-                id="standard-basic"
-                label="User Name"
-                defaultValue="User Name"
-                variant="standard"
-                onInput={onUserNameInput}
-                value={userName}
-                color="secondary"
-              />
-
-              <div>
-                <Typography
-                  variant="h3"
-                  component="h2"
-                  sx={{
-                    color: "Highlight",
-                    textAlign: "center",
-                  }}
-                >
-                  {currentChat && currentChat.name} Messages
-                </Typography>
-
-                <div>
-                  {messages.map((message) => (
-                    <div key={message.id}>
-                      {message.username}: {message.text}
-                    </div>
-                  ))}
-                </div>
-                <br></br>
-              </div>
-            </Box>
-            <div>
-              <TextField
-                variant="filled"
-                color="secondary"
-                label="Post Message"
-                placeholder="New Message"
-                onInput={onMessageInput}
-                value={inputMessage}
-              />{" "}
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => postMessage()}
-              >
-                Post Message
-              </Button>
-            </div>
-          </Container>
-        </div>
+      <Box sx={{ display: "flex" }}>
+        <Drawer
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+          variant="permanent"
+          anchor="left"
+        >
+          <Toolbar />
+          <List>
+            {chats.map((chat) => (
+              <MenuItem key={chat.id} value={chat.id}>
+                <ListItemIcon>
+                  <ChatBubbleIcon fontSize="small" />
+                </ListItemIcon>
+                <Button color="secondary" onClick={() => setChat(chat)}>
+                  {chat.name}
+                </Button>
+              </MenuItem>
+            ))}
+          </List>
+        </Drawer>
       </Box>
+      <br></br>
+
+      <Box>
+        <Typography
+          variant="h2"
+          component="h2"
+          sx={{
+            color: "Highlight",
+
+            textAlign: "center",
+          }}
+        >
+          Chat
+        </Typography>
+      </Box>
+
+      <Container maxWidth="sm">
+        <Box sx={{ minWidth: 120 }}>
+          <TextField
+            variant="filled"
+            color="secondary"
+            label="Add New Chat"
+            placeholder="enter chat name"
+            onChange={(event) => setNewChatName(event.target.value)}
+            value={newChatName}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                postNewChat();
+              }
+            }}
+            sx={{ margin: "1rem" }}
+          />
+
+          <TextField
+            id="standard-basic"
+            label="User Name"
+            defaultValue="User Name"
+            variant="standard"
+            onInput={onUserNameInput}
+            value={userName}
+            color="secondary"
+          />
+
+          <div>
+            <Typography
+              variant="h3"
+              component="h2"
+              sx={{
+                color: "Highlight",
+                textAlign: "center",
+              }}
+            >
+              {currentChat && currentChat.name} Messages
+            </Typography>
+
+            <div>
+              {messages.map((message) => (
+                <div key={message.id}>
+                  {message.username}: {message.text}
+                </div>
+              ))}
+            </div>
+            <br></br>
+          </div>
+        </Box>
+        <div>
+          <TextField
+            variant="filled"
+            color="secondary"
+            label="Post Message"
+            placeholder="New Message"
+            onInput={onMessageInput}
+            value={inputMessage}
+          />{" "}
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => postMessage()}
+          >
+            Post Message
+          </Button>
+        </div>
+      </Container>
     </div>
   );
 };
