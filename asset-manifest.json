@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mcon-353-demo-site/static/css/main.700737ba.css",
-    "main.js": "/mcon-353-demo-site/static/js/main.d5238542.js",
+    "main.js": "/mcon-353-demo-site/static/js/main.d06008bf.js",
     "static/js/787.5d944677.chunk.js": "/mcon-353-demo-site/static/js/787.5d944677.chunk.js",
     "static/media/IMG_1451.JPG": "/mcon-353-demo-site/static/media/IMG_1451.705d3cd522f492ca2d55.JPG",
     "static/media/arizona.jpg": "/mcon-353-demo-site/static/media/arizona.5be1e135802f28e89bf8.jpg",
@@ -12,11 +12,11 @@
     "static/media/china.jpg": "/mcon-353-demo-site/static/media/china.523c47f65e73cad3abb5.jpg",
     "index.html": "/mcon-353-demo-site/index.html",
     "main.700737ba.css.map": "/mcon-353-demo-site/static/css/main.700737ba.css.map",
-    "main.d5238542.js.map": "/mcon-353-demo-site/static/js/main.d5238542.js.map",
+    "main.d06008bf.js.map": "/mcon-353-demo-site/static/js/main.d06008bf.js.map",
     "787.5d944677.chunk.js.map": "/mcon-353-demo-site/static/js/787.5d944677.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.700737ba.css",
-    "static/js/main.d5238542.js"
+    "static/js/main.d06008bf.js"
   ]
 }
