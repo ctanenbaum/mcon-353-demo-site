@@ -3,7 +3,7 @@ import { useInterval } from "../../hooks/useInterval";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import { MenuItem, TextField, Typography, Button, Grid } from "@mui/material";
+import { MenuItem, TextField, Typography, Button } from "@mui/material";
 
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import Drawer from "@mui/material/Drawer";
@@ -113,6 +113,7 @@ export const Chat = () => {
 
   return (
     <div>
+      <div sx={{ innerHeight: "64px" }}></div>
       <Box sx={{ display: "flex" }}>
         <Drawer
           sx={{
@@ -121,12 +122,12 @@ export const Chat = () => {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
+              top: "69px",
             },
           }}
           variant="permanent"
           anchor="left"
         >
-          <Toolbar />
           <List>
             {chats.map((chat) => (
               <MenuItem key={chat.id} value={chat.id}>
